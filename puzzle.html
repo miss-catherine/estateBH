@@ -1,0 +1,210 @@
+<!DOCTYPE html>
+<!-- Designined by CodingLab | www.youtube.com/codinglabyt -->
+<html lang="en" dir="ltr">
+<meta charset="UTF-8">
+
+<head>
+  <meta charset="UTF-8">
+  <title> Responsive Drop Down Navigation Menu | CodingLab </title>
+  <link rel="stylesheet" href="assets/style.css">
+  <link rel="stylesheet" href="assets/index.css">
+
+  <!-- Boxicons CDN Link -->
+  <link href='https://unpkg.com/boxicons@2.0.7/css/boxicons.min.css' rel='stylesheet'>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+</head>
+
+<body>
+  <nav>
+    <div class="navbar">
+      <i class='bx bx-menu'></i>
+      <div class="logo"><img src="images/logo.png" alt="碧殿閣"><a href="#">Belvedere Heights</a></div>
+      <div class="nav-links">
+        <div class="sidebar-logo">
+          <span class="logo-name">Belvedere Heights</span>
+          <i class='bx bx-x'></i>
+        </div>
+        <ul class="links">
+          <li><a href="index.html">首頁</a></li>
+          <li>
+
+            <a href="announcement.html">公告</a>
+            <i class='bx bxs-chevron-down htmlcss-arrow arrow  '></i>
+            <ul class="htmlCss-sub-menu sub-menu">
+
+              <li><a href="notice.html">通告</a></li>
+              <li><a href="meeting.html">會議記錄 </a></li>
+               <li><a href="reports.html">財務報表 </a></li>
+            </ul>
+          </li>
+          <li>
+            <a href="history.html">屋苑歷史 </a>
+            <i class='bx bxs-chevron-down js-arrow arrow '></i>
+            <ul class="js-sub-menu sub-menu">
+              <li><a href="videos.html">懷舊影片 </a></li>
+              <li><a href="gallery.html">畫廊</a></li>
+              <li><a href="others.html">其他</a></li>
+
+            </ul>
+
+          <li><a href="about.html">關於屋苑 </a></li>
+          <li><a href="info_link.html">資訊連結 </a></li>
+          <li><a href=" activities.html">社區活動 </a></li>
+          <li>
+            <a href="leisure.html">休閑活動</a>
+            <i class='bx bxs-chevron-down js-arrow arrow '></i>
+            <ul class="js-sub-menu sub-menu">
+              <li><a href="games1.html">遊戲1 </a></li>
+              <li><a href="games2.html">遊戲2 </a></li>
+              <li><a href="puzzle.html">拼圖</a></li>
+              <li><a href="sticker.html">貼圖 </a></li>
+
+            </ul>
+
+          <li><a href="contact.html">聯絡我們 </a></li>
+        </ul>
+      </div>
+
+    </div>
+    </div>
+  </nav>
+
+<title>4×4 圖片拼接遊戲</title>
+  <style>
+    #puzzle {
+      display: grid;
+      grid-template-columns: repeat(4, 100px);
+      grid-template-rows: repeat(4, 100px);
+      gap: 2px;
+      width: 408px;
+      border: 2px solid #333;
+    }
+
+    .game-area {
+      display: flex;
+      justify-content: center;
+      align-items: flex-start;
+      gap: 32px;
+      margin: 20px auto;
+      padding: 0 16px;
+    }
+
+    .reference {
+      width: 228px;
+    }
+
+    .reference h3 {
+      margin: 0 0 10px;
+      text-align: center;
+    }
+
+    .reference img {
+      display: block;
+      width: 220px;
+      height: 220px;
+      object-fit: cover;
+      border: 2px solid #333;
+    }
+
+    @media (max-width: 900px) {
+      .game-area {
+        flex-direction: column;
+        align-items: center;
+      }
+    }
+
+    .piece {
+      width: 100px;
+      height: 100px;
+      background-image: url('images/p1.jpg');
+      /* 換成你的圖片檔名 */
+      background-size: 400px 400px;
+      cursor: grab;
+    }
+
+    .dragging {
+      opacity: 0.5;
+    }
+  </style>
+</head>
+
+<body>
+  <h2 style="text-align:center;">4×4 拼圖遊戲</h2>
+  <div class="game-area">
+    <section class="reference" aria-label="原圖參考">
+      <h3>原圖</h3>
+      <img src="images/p1.jpg" alt="拼圖原圖參考">
+    </section>
+    <section aria-label="拼圖遊戲">
+      <h3 style="text-align:center; margin: 0 0 10px;">拼圖</h3>
+      <div id="puzzle"></div>
+    </section>
+  </div>
+
+  <script>
+    const puzzle = document.getElementById("puzzle");
+    let positions = [];
+    const correctPositions = [];
+
+    // 建立拼圖塊
+    for (let row = 0; row < 4; row++) {
+      for (let col = 0; col < 4; col++) {
+        const piece = document.createElement("div");
+        piece.className = "piece";
+        const pos = `-${col * 100}px -${row * 100}px`;
+        piece.style.backgroundPosition = pos;
+        piece.dataset.pos = pos;
+        piece.draggable = true;
+        positions.push(piece);
+        correctPositions.push(pos);
+      }
+    }
+
+    // 打亂拼圖
+    positions.sort(() => Math.random() - 0.5);
+    positions.forEach(p => puzzle.appendChild(p));
+
+    // 拖曳交換邏輯
+    let dragged = null;
+
+    puzzle.addEventListener("dragstart", e => {
+      if (e.target.classList.contains("piece")) {
+        dragged = e.target;
+        e.target.classList.add("dragging");
+      }
+    });
+
+    puzzle.addEventListener("dragend", e => {
+      e.target.classList.remove("dragging");
+    });
+
+    puzzle.addEventListener("dragover", e => e.preventDefault());
+
+    puzzle.addEventListener("drop", e => {
+      if (e.target.classList.contains("piece") && dragged) {
+        let temp = dragged.style.backgroundPosition;
+        dragged.style.backgroundPosition = e.target.style.backgroundPosition;
+        e.target.style.backgroundPosition = temp;
+        dragged = null;
+        checkCompletion();
+      }
+    });
+
+    // 檢查是否完成
+    function checkCompletion() {
+      const pieces = document.querySelectorAll(".piece");
+      const currentPositions = Array.from(pieces).map(p => p.style.backgroundPosition);
+      const isComplete = currentPositions.every((pos, i) => pos === correctPositions[i]);
+      if (isComplete) {
+        setTimeout(() => alert("🎉 恭喜完成！"), 200);
+      }
+    }
+  </script>
+
+  <script src="assets/script.js"></script>
+
+
+
+</body>
+
+</html>

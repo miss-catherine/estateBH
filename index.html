@@ -1,0 +1,599 @@
+<!DOCTYPE html>
+<!-- Designined by CodingLab | www.youtube.com/codinglabyt -->
+<html lang="en" dir="ltr">
+  <html lang="zh-HK" data-theme="light">
+
+
+<head>
+  <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>即時資訊 | 天氣、AQHI 與外匯</title>
+  <!-- Google Fonts 現代字體與 FontAwesome 圖示 -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+  <title> Responsive Drop Down Navigation Menu | CodingLab </title>
+  <link rel="stylesheet" href="assets/style.css">
+  <link rel="stylesheet" href="assets/index.css">
+
+  <!-- Boxicons CDN Link -->
+  <link href='https://unpkg.com/boxicons@2.0.7/css/boxicons.min.css' rel='stylesheet'>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+</head>
+
+<body>
+  <nav>
+    <div class="navbar">
+      <i class='bx bx-menu'></i>
+      <div class="logo"><img src="images/logo.png" alt="碧殿閣"><a href="#">Belvedere Heights</a></div>
+      <div class="nav-links">
+        <div class="sidebar-logo">
+          <span class="logo-name">Belvedere Heights</span>
+          <i class='bx bx-x'></i>
+        </div>
+        <ul class="links">
+          <li><a href="index.html">首頁</a></li>
+          <li>
+
+            <a href="announcement.html">公告</a>
+            <i class='bx bxs-chevron-down htmlcss-arrow arrow  '></i>
+            <ul class="htmlCss-sub-menu sub-menu">
+
+              <li><a href="notice.html">通告</a></li>
+              <li><a href="meeting.html">會議記錄 </a></li>
+             <li><a href="reports.html">財務報表 </a></li>
+
+            </ul>
+          </li>
+          <li>
+            <a href="history.html">屋苑歷史 </a>
+            <i class='bx bxs-chevron-down js-arrow arrow '></i>
+            <ul class="js-sub-menu sub-menu">
+              <li><a href="videos.html">懷舊影片 </a></li>
+              <li><a href="gallery.html">畫廊</a></li>
+              <li><a href="others.html">其他</a></li>
+
+            </ul>
+
+          <li><a href="about.html">關於屋苑 </a></li>
+          <li><a href="info_link.html">資訊連結 </a></li>
+           <li><a href=" activities.html">社區活動 </a></li>
+          <li>
+            <a href="leisure.html">休閑活動</a>
+            <i class='bx bxs-chevron-down js-arrow arrow '></i>
+            <ul class="js-sub-menu sub-menu">
+              <li><a href="games1.html">遊戲1 </a></li>
+              <li><a href="games2.html">遊戲2 </a></li>
+              <li><a href="puzzle.html">拼圖</a></li>
+              <li><a href="sticker.html">貼圖 </a></li>
+
+            </ul>
+
+          <li><a href="contact.html">聯絡我們 </a></li>
+        </ul>
+      </div>
+
+    </div>
+    </div>
+  </nav>
+
+   <!-- <section class="hero"></section> -->
+
+  <div class="container">
+    <!-- 1. 頂部頁首 Header -->
+    <header>
+      <div class="header-title">
+        <h1>即時資訊</h1>
+        <div class="auto-refresh-indicator">
+          <i class="fa-solid fa-arrows-rotate"></i> 下次自動更新數據：<span id="countdown-timer">10:00</span>
+        </div>
+      </div>
+      <div class="header-right">
+        <div class="clock-container">
+          <div id="date-display" class="date-display">---- 年 -- 月 -- 日 星期-</div>
+          <div id="time-display" class="time-display">00:00:00</div>
+        </div>
+        <div class="btn-group">
+          <!-- 即時手動刷新按鈕 -->
+          <button id="refresh-btn" class="icon-btn" title="立即刷新數據" aria-label="刷新數據">
+            <i class="fa-solid fa-rotate-right"></i>
+          </button>
+          <!-- 主題切換按鈕 -->
+          <button id="theme-toggle" class="icon-btn" title="切換主題" aria-label="切換主題">
+            <i class="fa-solid fa-moon"></i>
+          </button>
+        </div>
+      </div>
+    </header>
+
+    <!-- 2. 香港即時天氣與預測 Section -->
+    <section class="weather-section">
+      <div class="section-header">
+        <div class="section-title">
+          <i class="fa-solid fa-cloud-sun"></i>
+          <span>香港天氣狀態</span>
+        </div>
+        <div id="weather-update-time" class="update-time">數據更新中...</div>
+      </div>
+
+      <!-- 即時天氣 -->
+      <div class="current-weather-card">
+        <div class="weather-main-info">
+          <div id="current-temp" class="temp-display">--°C</div>
+          <div class="weather-desc-group">
+            <div class="weather-location"><i class="fa-solid fa-location-dot"></i> 香港天文台</div>
+            <div id="current-condition" class="weather-desc">正在載入天氣資訊...</div>
+          </div>
+        </div>
+        <div class="weather-extra-info">
+          <div class="extra-item">
+            <span class="label">相對濕度</span>
+            <span id="current-humidity" class="value">--%</span>
+          </div>
+          <div class="extra-item">
+            <span class="label">紫外線指數</span>
+            <span id="current-uv" class="value">--</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- 一週天氣預測 -->
+      <div id="forecast-grid" class="forecast-grid">
+        <!-- 預測卡片動態插入 -->
+      </div>
+    </section>
+
+    <!-- 3. 香港空氣質素健康指數 (AQHI) Section -->
+    <section class="aqhi-section">
+      <div class="section-header">
+        <div class="section-title">
+          <i class="fa-solid fa-wind"></i>
+          <span>空氣質素健康指數 (AQHI)</span>
+        </div>
+        <div class="update-time">數據來源：香港環境保護署</div>
+      </div>
+
+      <div class="aqhi-grid">
+        <!-- 一般監測站 -->
+        <div class="aqhi-card">
+          <div class="aqhi-header">
+            <span class="aqhi-type">一般監測站 (General)</span>
+            <div class="aqhi-badge">
+              <div id="aqhi-general-box" class="aqhi-level-box aqhi-low">3</div>
+              <span id="aqhi-general-risk" class="aqhi-risk">低</span>
+            </div>
+          </div>
+          <div id="aqhi-general-advice" class="aqhi-advice">
+            健康風險為低。建議大眾可如常進行戶外活動。
+          </div>
+        </div>
+
+        <!-- 路邊監測站 -->
+        <div class="aqhi-card">
+          <div class="aqhi-header">
+            <span class="aqhi-type">路邊監測站 (Roadside)</span>
+            <div class="aqhi-badge">
+              <div id="aqhi-roadside-box" class="aqhi-level-box aqhi-moderate">4</div>
+              <span id="aqhi-roadside-risk" class="aqhi-risk">中</span>
+            </div>
+          </div>
+          <div id="aqhi-roadside-advice" class="aqhi-advice">
+            健康風險為中等。一般大眾可如常活動；對空氣污染敏感人士宜注意身體狀況。
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- 4. 外匯資訊 Section -->
+    <section class="forex-section">
+      <div class="section-header">
+        <div class="section-title">
+          <i class="fa-solid fa-coins"></i>
+          <span>外匯匯率資訊 (相對 HKD)</span>
+        </div>
+        <div id="forex-update-time" class="update-time">匯率更新日期：數據載入中...</div>
+      </div>
+
+      <div class="forex-grid">
+        <!-- 美元 USD -->
+        <div class="forex-card">
+          <div class="forex-info">
+            <div class="currency-flag">USD</div>
+            <div>
+              <div class="currency-name">美元</div>
+              <div class="currency-code">USD / HKD</div>
+            </div>
+          </div>
+          <div class="forex-rate-group">
+            <div id="rate-usd" class="forex-rate">-.----</div>
+            <div class="forex-unit">HKD</div>
+          </div>
+        </div>
+
+        <!-- 人民幣 CNY -->
+        <div class="forex-card">
+          <div class="forex-info">
+            <div class="currency-flag">CNY</div>
+            <div>
+              <div class="currency-name">人民幣</div>
+              <div class="currency-code">CNY / HKD</div>
+            </div>
+          </div>
+          <div class="forex-rate-group">
+            <div id="rate-cny" class="forex-rate">-.----</div>
+            <div class="forex-unit">HKD</div>
+          </div>
+        </div>
+
+        <!-- 日圓 JPY -->
+        <div class="forex-card">
+          <div class="forex-info">
+            <div class="currency-flag">JPY</div>
+            <div>
+              <div class="currency-name">日圓</div>
+              <div class="currency-code">JPY / HKD</div>
+            </div>
+          </div>
+          <div class="forex-rate-group">
+            <div id="rate-jpy" class="forex-rate">-.----</div>
+            <div class="forex-unit">HKD</div>
+          </div>
+        </div>
+
+        <!-- 英鎊 GBP -->
+        <div class="forex-card">
+          <div class="forex-info">
+            <div class="currency-flag">GBP</div>
+            <div>
+              <div class="currency-name">英鎊</div>
+              <div class="currency-code">GBP / HKD</div>
+            </div>
+          </div>
+          <div class="forex-rate-group">
+            <div id="rate-gbp" class="forex-rate">-.----</div>
+            <div class="forex-unit">HKD</div>
+          </div>
+        </div>
+
+        <!-- 歐元 EUR -->
+        <div class="forex-card">
+          <div class="forex-info">
+            <div class="currency-flag">EUR</div>
+            <div>
+              <div class="currency-name">歐元</div>
+              <div class="currency-code">EUR / HKD</div>
+            </div>
+          </div>
+          <div class="forex-rate-group">
+            <div id="rate-eur" class="forex-rate">-.----</div>
+            <div class="forex-unit">HKD</div>
+          </div>
+        </div>
+
+        <!-- 澳幣 AUD -->
+        <div class="forex-card">
+          <div class="forex-info">
+            <div class="currency-flag">AUD</div>
+            <div>
+              <div class="currency-name">澳幣</div>
+              <div class="currency-code">AUD / HKD</div>
+            </div>
+          </div>
+          <div class="forex-rate-group">
+            <div id="rate-aud" class="forex-rate">-.----</div>
+            <div class="forex-unit">HKD</div>
+          </div>
+        </div>
+
+        <!-- 加幣 CAD -->
+        <div class="forex-card">
+          <div class="forex-info">
+            <div class="currency-flag">CAD</div>
+            <div>
+              <div class="currency-name">加幣</div>
+              <div class="currency-code">CAD / HKD</div>
+            </div>
+          </div>
+          <div class="forex-rate-group">
+            <div id="rate-cad" class="forex-rate">-.----</div>
+            <div class="forex-unit">HKD</div>
+          </div>
+        </div>
+      </div>
+    </section>
+  </div>
+
+  <script>
+    /* ==========================================================================
+       1. 時間與日期動態更新 & 定時自動更新數據邏輯
+       ========================================================================== */
+    const REFRESH_INTERVAL_SECONDS = 600; // 10 分鐘 = 600 秒
+    let secondsLeft = REFRESH_INTERVAL_SECONDS;
+
+    function updateClock() {
+      const now = new Date();
+      const year = now.getFullYear();
+      const month = String(now.getMonth() + 1).padStart(2, '0');
+      const date = String(now.getDate()).padStart(2, '0');
+
+      const weekDays = ['星期日', '星期一', '星期二', '星期三', '星期四', '星期五', '星期六'];
+      const dayOfWeek = weekDays[now.getDay()];
+
+      const hours = String(now.getHours()).padStart(2, '0');
+      const minutes = String(now.getMinutes()).padStart(2, '0');
+      const seconds = String(now.getSeconds()).padStart(2, '0');
+
+      document.getElementById('date-display').textContent = `${year}年${month}月${date}日 ${dayOfWeek}`;
+      document.getElementById('time-display').textContent = `${hours}:${minutes}:${seconds}`;
+
+      // 更新倒數計時器
+      updateCountdownTimer();
+    }
+
+    function updateCountdownTimer() {
+      secondsLeft--;
+      if (secondsLeft <= 0) {
+        // 時間倒數完成，觸發資料重新載入
+        loadAllData();
+        secondsLeft = REFRESH_INTERVAL_SECONDS;
+      }
+
+      const m = String(Math.floor(secondsLeft / 60)).padStart(2, '0');
+      const s = String(secondsLeft % 60).padStart(2, '0');
+      document.getElementById('countdown-timer').textContent = `${m}:${s}`;
+    }
+
+    setInterval(updateClock, 1000);
+    updateClock();
+
+    /* ==========================================================================
+       2. 深色 / 淺色模式切換 (Dark / Light Mode)
+       ========================================================================== */
+    const themeToggleBtn = document.getElementById('theme-toggle');
+    const htmlNode = document.documentElement;
+
+    themeToggleBtn.addEventListener('click', () => {
+      const currentTheme = htmlNode.getAttribute('data-theme');
+      const newTheme = currentTheme === 'light' ? 'dark' : 'light';
+
+      htmlNode.setAttribute('data-theme', newTheme);
+
+      const icon = themeToggleBtn.querySelector('i');
+      icon.className = newTheme === 'dark' ? 'fa-solid fa-sun' : 'fa-solid fa-moon';
+    });
+
+    /* ==========================================================================
+       3. 天氣 API 接入 (香港天文台開放 API)
+       ========================================================================== */
+    const HKO_CURRENT_API = 'https://data.weather.gov.hk/weatherAPI/opendata/weather.php?dataType=rhrread&lang=tc';
+    const HKO_FORECAST_API = 'https://data.weather.gov.hk/weatherAPI/opendata/weather.php?dataType=fnd&lang=tc';
+
+    function getWeatherIconClass(iconId) {
+      if ([50, 51, 52].includes(iconId)) return 'fa-sun';
+      if ([53, 54, 60, 61].includes(iconId)) return 'fa-cloud-sun';
+      if ([62, 63, 64, 65].includes(iconId)) return 'fa-cloud-showers-heavy';
+      if ([66, 67, 68].includes(iconId)) return 'fa-bolt';
+      return 'fa-cloud';
+    }
+
+    async function fetchWeatherData() {
+      try {
+        const resCurrent = await fetch(HKO_CURRENT_API);
+        if (!resCurrent.ok) throw new Error(`即時天氣 API 回應 ${resCurrent.status}`);
+        const dataCurrent = await resCurrent.json();
+
+        if (dataCurrent.temperature && dataCurrent.temperature.data.length > 0) {
+          const hkTemp = dataCurrent.temperature.data.find(item => item.place === "香港天文台") || dataCurrent.temperature.data[0];
+          document.getElementById('current-temp').textContent = `${hkTemp.value}°C`;
+        }
+
+        if (dataCurrent.humidity && dataCurrent.humidity.data.length > 0) {
+          document.getElementById('current-humidity').textContent = `${dataCurrent.humidity.data[0].value}%`;
+        }
+
+        if (dataCurrent.uvindex && dataCurrent.uvindex.data.length > 0) {
+          document.getElementById('current-uv').textContent = dataCurrent.uvindex.data[0].value;
+        } else {
+          document.getElementById('current-uv').textContent = '無/低';
+        }
+
+        document.getElementById('current-condition').textContent = dataCurrent.rainfall ? '大致多雲，局部地區有雨' : '天氣良好';
+        const updateTime = dataCurrent.updateTime || '';
+        document.getElementById('weather-update-time').textContent = updateTime
+          ? `更新時間: ${updateTime.substring(11, 16)}`
+          : '更新時間: 未提供';
+
+        const resForecast = await fetch(HKO_FORECAST_API);
+        if (!resForecast.ok) throw new Error(`九天天氣 API 回應 ${resForecast.status}`);
+        const dataForecast = await resForecast.json();
+        renderForecast(dataForecast.weatherForecast || []);
+
+      } catch (error) {
+        console.error('天氣數據獲取失敗，改用預備 Mock Data:', error);
+        renderMockWeatherData();
+      }
+    }
+
+    function renderForecast(forecastList) {
+      const container = document.getElementById('forecast-grid');
+      container.innerHTML = '';
+      const weekForecast = Array.isArray(forecastList) ? forecastList.slice(0, 7) : [];
+
+      weekForecast.forEach(day => {
+        const forecastDate = String(day.forecastDate || '');
+        const dateStr = forecastDate.length >= 8
+          ? `${forecastDate.substring(4, 6)}/${forecastDate.substring(6, 8)}`
+          : '--/--';
+        const iconClass = getWeatherIconClass(day.ForecastIcon);
+        const minTemp = day.forecastMintemp?.value ?? '--';
+        const maxTemp = day.forecastMaxtemp?.value ?? '--';
+        const humidity = day.forecastForecastRHRange?.value ?? '--';
+
+        const cardHTML = `
+                    <div class="forecast-card">
+                        <div class="forecast-date">${dateStr}</div>
+                        <div class="forecast-week">${day.week || '未知'}</div>
+                        <i class="fa-solid ${iconClass} forecast-icon"></i>
+                        <div class="forecast-temp">${minTemp}°C - ${maxTemp}°C</div>
+                        <div class="forecast-rh">${humidity}% RH</div>
+                    </div>
+                `;
+        container.innerHTML += cardHTML;
+      });
+
+      if (weekForecast.length === 0) {
+        container.innerHTML = '<div class="update-time">暫時未能取得預報資料，請稍後再試。</div>';
+      }
+    }
+
+    function renderMockWeatherData() {
+      document.getElementById('current-temp').textContent = '26°C';
+      document.getElementById('current-humidity').textContent = '78%';
+      document.getElementById('current-uv').textContent = '5 (中等)';
+      document.getElementById('current-condition').textContent = '多雲，有幾陣驟雨';
+      document.getElementById('weather-update-time').textContent = '更新時間: 備用離線數據';
+
+      const mockList = [
+        { week: '星期一', date: '09/14', temp: '24°C - 28°C', rh: '70-85%', icon: 'fa-cloud-sun' },
+        { week: '星期二', date: '09/15', temp: '23°C - 27°C', rh: '75-90%', icon: 'fa-cloud-showers-heavy' },
+        { week: '星期三', date: '09/16', temp: '22°C - 26°C', rh: '65-80%', icon: 'fa-sun' },
+        { week: '星期四', date: '09/17', temp: '24°C - 29°C', rh: '60-75%', icon: 'fa-sun' },
+        { week: '星期五', date: '09/18', temp: '25°C - 30°C', rh: '65-85%', icon: 'fa-cloud-sun' },
+        { week: '星期六', date: '09/19', temp: '23°C - 27°C', rh: '70-90%', icon: 'fa-bolt' },
+        { week: '星期日', date: '09/20', temp: '24°C - 28°C', rh: '65-80%', icon: 'fa-cloud' }
+      ];
+
+      const container = document.getElementById('forecast-grid');
+      container.innerHTML = mockList.map(item => `
+                <div class="forecast-card">
+                    <div class="forecast-date">${item.date}</div>
+                    <div class="forecast-week">${item.week}</div>
+                    <i class="fa-solid ${item.icon} forecast-icon"></i>
+                    <div class="forecast-temp">${item.temp}</div>
+                    <div class="forecast-rh">${item.rh}</div>
+                </div>
+            `).join('');
+    }
+
+    /* ==========================================================================
+       4. 香港空氣質素健康指數 (AQHI) 邏輯設定
+       ========================================================================== */
+    function getAQHIMeta(level) {
+      if (level <= 3) {
+        return { risk: '低', class: 'aqhi-low', advice: '健康風險為低。建議大眾可如常進行戶外活動。' };
+      } else if (level <= 6) {
+        return { risk: '中', class: 'aqhi-moderate', advice: '健康風險為中等。一般大眾可如常活動；對空氣污染敏感人士宜注意身體狀況。' };
+      } else if (level <= 7) {
+        return { risk: '高', class: 'aqhi-high', advice: '健康風險偏高。兒童、長者及心臟病或呼吸系統疾病患者應減少戶外體力消耗。' };
+      } else if (level <= 10) {
+        return { risk: '甚高', class: 'aqhi-very-high', advice: '健康風險甚高。一般大眾應減少戶外體力消耗。' };
+      } else {
+        return { risk: '嚴重', class: 'aqhi-serious', advice: '健康風險嚴重。一般大眾應盡量減少或避免戶外體力消耗。' };
+      }
+    }
+
+    function updateAQHIUI(generalLevel, roadsideLevel) {
+      // 更新一般監測站
+      const genMeta = getAQHIMeta(generalLevel);
+      const genBox = document.getElementById('aqhi-general-box');
+      genBox.textContent = generalLevel;
+      genBox.className = `aqhi-level-box ${genMeta.class}`;
+      document.getElementById('aqhi-general-risk').textContent = genMeta.risk;
+      document.getElementById('aqhi-general-advice').textContent = genMeta.advice;
+
+      // 更新路邊監測站
+      const roadMeta = getAQHIMeta(roadsideLevel);
+      const roadBox = document.getElementById('aqhi-roadside-box');
+      roadBox.textContent = roadsideLevel;
+      roadBox.className = `aqhi-level-box ${roadMeta.class}`;
+      document.getElementById('aqhi-roadside-risk').textContent = roadMeta.risk;
+      document.getElementById('aqhi-roadside-advice').textContent = roadMeta.advice;
+    }
+
+    /* ==========================================================================
+       5. 外匯數據 API 接入 (ExchangeRate-API)
+       ========================================================================== */
+    const FOREX_API = 'https://open.er-api.com/v6/latest/HKD';
+
+    async function fetchForexData() {
+      try {
+        const response = await fetch(FOREX_API);
+        if (!response.ok) throw new Error(`匯率 API 回應 ${response.status}`);
+        const data = await response.json();
+
+        if (data && data.rates && data.rates.USD && data.rates.CNY && data.rates.JPY && data.rates.GBP && data.rates.EUR && data.rates.AUD && data.rates.CAD) {
+          const hkdPerUsd = (1 / data.rates.USD).toFixed(3);
+          const hkdPerCny = (1 / data.rates.CNY).toFixed(4);
+          const hkdPerJpy = (1 / data.rates.JPY).toFixed(4);
+          const hkdPerGbp = (1 / data.rates.GBP).toFixed(3);
+          const hkdPerEur = (1 / data.rates.EUR).toFixed(3);
+          const hkdPerAud = (1 / data.rates.AUD).toFixed(3);
+          const hkdPerCad = (1 / data.rates.CAD).toFixed(3);
+
+          document.getElementById('rate-usd').textContent = hkdPerUsd;
+          document.getElementById('rate-cny').textContent = hkdPerCny;
+          document.getElementById('rate-jpy').textContent = hkdPerJpy;
+          document.getElementById('rate-gbp').textContent = hkdPerGbp;
+          document.getElementById('rate-eur').textContent = hkdPerEur;
+          document.getElementById('rate-aud').textContent = hkdPerAud;
+          document.getElementById('rate-cad').textContent = hkdPerCad;
+
+          const lastUpdate = new Date(data.time_last_update_utc);
+          const formattedDate = `${lastUpdate.getFullYear()}-${String(lastUpdate.getMonth() + 1).padStart(2, '0')}-${String(lastUpdate.getDate()).padStart(2, '0')} ${String(lastUpdate.getHours()).padStart(2, '0')}:${String(lastUpdate.getMinutes()).padStart(2, '0')}`;
+
+          document.getElementById('forex-update-time').textContent = `匯率數據更新日期：${formattedDate} (UTC)`;
+        }
+      } catch (error) {
+        console.error('外匯數據獲取失敗，改用預設數據:', error);
+        document.getElementById('rate-usd').textContent = '7.8250';
+        document.getElementById('rate-cny').textContent = '1.0950';
+        document.getElementById('rate-jpy').textContent = '0.0521';
+        document.getElementById('rate-gbp').textContent = '10.120';
+        document.getElementById('rate-eur').textContent = '8.4850';
+        document.getElementById('rate-aud').textContent = '5.2300';
+        document.getElementById('rate-cad').textContent = '5.7500';
+
+        const today = new Date();
+        document.getElementById('forex-update-time').textContent = `匯率數據更新日期：${today.toISOString().split('T')[0]} (離線數據)`;
+      }
+    }
+
+    /* ==========================================================================
+       6. 載入與手動刷新機制
+       ========================================================================== */
+    const refreshBtn = document.getElementById('refresh-btn');
+
+    async function loadAllData() {
+      const refreshIcon = refreshBtn.querySelector('i');
+      refreshIcon.classList.add('spin-icon'); // 啟動旋轉動畫
+
+      // 同步獲取天氣與外匯數據
+      await Promise.allSettled([fetchWeatherData(), fetchForexData()]);
+
+      // 初始化 AQHI UI 數據
+      updateAQHIUI(3, 4);
+
+      // 重置倒數計時器
+      secondsLeft = REFRESH_INTERVAL_SECONDS;
+
+      refreshIcon.classList.remove('spin-icon'); // 停止旋轉動畫
+    }
+
+    // 綁定手動刷新按鈕
+    refreshBtn.addEventListener('click', loadAllData);
+
+    // 頁面初始化
+    window.addEventListener('DOMContentLoaded', loadAllData);
+  </script>
+
+
+
+  <script src="assets/script.js"></script>
+
+
+
+</body>
+
+</html>

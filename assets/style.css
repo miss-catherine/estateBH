@@ -1,0 +1,336 @@
+/* Google Fonts Link */
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap');
+
+* {
+  padding: 0;
+  margin: 0;
+  text-decoration: none;
+  list-style: none;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: "Montserrat", sans-serif;
+}
+
+nav {
+  position: relative;
+  width: 100%;
+  background: #3f739b;
+  z-index: 1000;
+}
+
+.navbar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  max-width: 1440px;
+  margin: 0 auto;
+  padding: 0 48px;
+  height: 80px;
+}
+
+.logo {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  flex-shrink: 0;
+  font-size: 30px;
+  font-weight: 700;
+}
+
+.logo img {
+  display: block;
+  height: 56px;
+  width: auto;
+  filter: brightness(0) invert(1) drop-shadow(0 0 1px #fff);
+}
+
+.logo a,
+.nav-links a,
+.sidebar-logo {
+  color: #fff;
+}
+
+.nav-links {
+  height: 100%;
+}
+
+.links {
+  display: flex;
+  align-items: center;
+  height: 100%;
+  gap: 4px;
+}
+
+.links>li {
+  position: relative;
+  display: flex;
+  align-items: center;
+  height: 100%;
+}
+
+.links>li>a {
+  display: block;
+  padding: 12px 13px;
+  border-radius: 4px;
+  font-size: 15px;
+  white-space: nowrap;
+  transition: background-color 0.2s ease;
+}
+
+.links>li:hover>a,
+.links>li:focus-within>a {
+  background: rgba(255, 255, 255, 0.16);
+}
+
+.arrow {
+  display: none;
+}
+
+.sub-menu {
+  position: absolute;
+  top: 100%;
+  left: 0;
+  min-width: 170px;
+  padding: 8px;
+  border-radius: 0 0 6px 6px;
+  background: #315f82;
+  box-shadow: 0 8px 18px rgba(0, 0, 0, 0.16);
+  opacity: 0;
+  visibility: hidden;
+  transform: translateY(6px);
+  transition: opacity 0.18s ease, transform 0.18s ease, visibility 0.18s ease;
+}
+
+.links>li:hover>.sub-menu,
+.links>li:focus-within>.sub-menu {
+  opacity: 1;
+  visibility: visible;
+  transform: translateY(0);
+}
+
+.sub-menu a {
+  display: block;
+  padding: 10px 12px;
+  border-radius: 4px;
+  font-size: 14px;
+  white-space: nowrap;
+}
+
+.sub-menu a:hover,
+.sub-menu a:focus-visible {
+  background: rgba(255, 255, 255, 0.14);
+}
+
+.bx-menu,
+.sidebar-logo {
+  display: none;
+}
+
+.bx-menu {
+  color: #fff;
+  font-size: 28px;
+  cursor: pointer;
+}
+
+.hero {
+  background: url("images/碧殿閣.png") no-repeat center center;
+  background-size: cover;
+  height: calc(100vh - 80px);
+}
+
+.about {
+  padding: 60px 8%;
+  background: #f5f7fa;
+}
+
+.main {
+  max-width: 1200px;
+  margin: 0 auto;
+  display: flex;
+  align-items: center;
+  gap: 40px;
+}
+
+.main img {
+  width: 48%;
+  max-width: 520px;
+  height: auto;
+  border-radius: 18px;
+  box-shadow: 0 12px 30px rgba(0, 0, 0, 0.12);
+}
+
+.about-text {
+  flex: 1;
+}
+
+.about-text h1 {
+  font-size: 2.2rem;
+  margin-bottom: 20px;
+  color: #1d3557;
+}
+
+.about-text p {
+  margin-bottom: 18px;
+  line-height: 1.8;
+  color: #2d3748;
+  font-size: 1.02rem;
+}
+
+
+
+@media (max-width: 1100px) {
+  .navbar {
+    padding: 0 24px;
+  }
+
+  .logo {
+    font: size 30px;
+  }
+
+  .links {
+    gap: 0;
+  }
+
+  .links>li>a {
+    padding-right: 9px;
+    padding-left: 9px;
+    font-size: 14px;
+  }
+}
+
+@media (max-width: 900px) {
+  .navbar {
+    padding: 0 20px;
+  }
+
+  .bx-menu {
+    display: block;
+    order: 1;
+  }
+
+  .logo {
+    order: 0;
+    font-size: 22px;
+  }
+
+  .nav-links {
+    position: fixed;
+    top: 0;
+    left: -100%;
+    width: min(320px, 85vw);
+    height: 100vh;
+    padding: 20px;
+    background: #315f82;
+    box-shadow: 8px 0 24px rgba(0, 0, 0, 0.18);
+    overflow-y: auto;
+    transition: left 0.3s ease;
+    z-index: 1001;
+  }
+
+  .nav-links.show {
+    left: 0;
+  }
+
+  .sidebar-logo {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    min-height: 48px;
+    margin-bottom: 18px;
+    font-size: 20px;
+    font-weight: 700;
+  }
+
+  .sidebar-logo .bx-x {
+    font-size: 26px;
+    cursor: pointer;
+  }
+
+  .links {
+    display: block;
+    height: auto;
+  }
+
+  .links>li {
+    display: block;
+    height: auto;
+  }
+
+  .links>li>a {
+    padding: 13px 8px;
+    font-size: 16px;
+  }
+
+  .links>li:hover>a,
+  .links>li:focus-within>a {
+    background: transparent;
+  }
+
+  .arrow {
+    display: block;
+    position: absolute;
+    top: 0;
+    right: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 44px;
+    height: 44px;
+    padding: 0;
+    color: #fff;
+    cursor: pointer;
+    transition: transform 0.2s ease;
+    z-index: 1;
+  }
+
+  .sub-menu {
+    position: static;
+    display: none;
+    min-width: 0;
+    padding: 0 0 6px 14px;
+    border-radius: 0;
+    background: transparent;
+    box-shadow: none;
+    opacity: 1;
+    visibility: visible;
+    transform: none;
+    transition: none;
+  }
+
+  .links>li:hover>.sub-menu,
+  .links>li:focus-within>.sub-menu {
+    display: none;
+  }
+
+  .nav-links .links>li.submenu-open>.sub-menu {
+    display: block;
+  }
+
+  .nav-links .links>li.submenu-open>.arrow {
+    transform: rotate(180deg);
+  }
+
+  .sub-menu a {
+    padding: 10px 12px;
+  }
+
+  .sub-menu a:hover,
+  .sub-menu a:focus-visible {
+    background: rgba(255, 255, 255, 0.1);
+  }
+
+  .main {
+    flex-direction: column;
+  }
+
+  .main img {
+    width: 100%;
+    max-width: 100%;
+  }
+
+  .about-text h1 {
+    font-size: 1.8rem;
+  }
+}

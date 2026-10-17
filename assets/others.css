@@ -1,0 +1,243 @@
+/*=============== GOOGLE FONTS ===============*/
+@import url("https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&family=Cormorant+Garamond:wght@500;600;700&display=swap");
+
+/*=============== VARIABLES CSS ===============*/
+:root {
+  /*========== Colors ==========*/
+  /*Color mode HSL(hue, saturation, lightness)*/
+  --first-color: hsl(82, 60%, 28%);
+  --title-color: hsl(0, 0%, 15%);
+  --text-color: hsl(0, 0%, 35%);
+  --body-color: hsl(196, 33%, 80%);
+  --container-color: hsl(0, 0%, 100%);
+
+  /*========== Font and typography ==========*/
+  /*.5rem = 8px | 1rem = 16px ...*/
+  --body-font: "Poppins", sans-serif;
+  --h2-font-size: 1.25rem;
+  --small-font-size: .813rem;
+}
+
+/*========== Responsive typography ==========*/
+@media screen and (min-width: 1120px) {
+  :root {
+    --h2-font-size: 1.5rem;
+    --small-font-size: .875rem;
+  }
+}
+
+/*=============== BASE ===============*/
+* {
+  box-sizing: border-box;
+  padding: 0;
+  margin: 0;
+}
+
+body {
+  font-family: var(--body-font);
+  background-color: #dce8e5;
+  color: var(--text-color);
+}
+
+img {
+  display: block;
+  max-width: 100%;
+  height: auto;
+}
+
+/*=============== CARD ===============*/
+.container {
+  display: grid;
+  place-items: start center;
+  align-content: start;
+  width: calc(100% - 3rem);
+  max-width: 1200px;
+  margin-inline: auto;
+  padding-block: 2rem 5rem;
+}
+
+.page__title {
+  width: 100%;
+  text-align: center;
+  font-family: "Cormorant Garamond", serif;
+  font-size: clamp(1.8rem, 2.5vw, 3rem);
+  font-weight: 600;
+  letter-spacing: 0.04em;
+  color: #1e1e1e;
+  margin-bottom: 2rem;
+  text-transform: none;
+  line-height: 1.1;
+}
+
+.card__container {
+  display: grid;
+  width: 100%;
+  row-gap: 3.5rem;
+  justify-items: center;
+}
+
+.card__article {
+  position: relative;
+  width: 100%;
+  max-width: 420px;
+  overflow: hidden;
+}
+
+.card__img {
+  width: 100%;
+  margin-inline: auto;
+  border-radius: 1.5rem;
+}
+
+.card__data {
+  width: 260px;
+  background: rgba(10, 12, 15, 0.28);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  padding: 0.7rem 0.9rem;
+  box-shadow: 0 10px 24px hsla(0, 0%, 0%, .22);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  border-radius: 0.9rem;
+  position: absolute;
+  bottom: -6.8rem;
+  left: 0;
+  right: 0;
+  margin-inline: auto;
+  opacity: 0;
+  transition: opacity 1s 1s;
+}
+
+.card__description {
+  display: block;
+  font-size: var(--small-font-size);
+  font-weight: 500;
+  line-height: 1.4;
+  letter-spacing: .02em;
+  color: rgba(255, 255, 255, 0.85);
+  text-align: center;
+  margin-bottom: 0;
+}
+
+.card__title {
+  font-size: var(--h2-font-size);
+  font-weight: 500;
+  color: var(--title-color);
+  margin-bottom: .75rem;
+}
+
+.card__button {
+  text-decoration: none;
+  font-size: var(--small-font-size);
+  font-weight: 500;
+  color: var(--first-color);
+}
+
+.card__button:hover {
+  text-decoration: underline;
+}
+
+/* Naming animations in hover */
+.card__article:hover .card__data {
+  animation: show-data 1s forwards;
+  opacity: 1;
+  transition: opacity .3s;
+}
+
+.card__article:hover {
+  animation: remove-overflow 2s forwards;
+}
+
+.card__article:not(:hover) {
+  animation: show-overflow 2s forwards;
+}
+
+.card__article:not(:hover) .card__data {
+  animation: remove-data 1s forwards;
+}
+
+/* Card animation */
+@keyframes show-data {
+  50% {
+    transform: translateY(-8.2rem);
+  }
+
+  100% {
+    transform: translateY(-5.2rem);
+  }
+}
+
+@keyframes remove-overflow {
+  to {
+    overflow: initial;
+  }
+}
+
+@keyframes remove-data {
+  0% {
+    transform: translateY(-5.2rem);
+  }
+
+  50% {
+    transform: translateY(-8.2rem);
+  }
+
+  100% {
+    transform: translateY(.5rem);
+  }
+}
+
+@keyframes show-overflow {
+  0% {
+    overflow: initial;
+    pointer-events: none;
+  }
+
+  50% {
+    overflow: hidden;
+  }
+}
+
+/*=============== BREAKPOINTS ===============*/
+/* For small devices */
+@media screen and (max-width: 340px) {
+  .container {
+    margin-inline: 1rem;
+  }
+
+  .card__data {
+    width: 250px;
+    padding: 1rem;
+  }
+}
+
+/* For medium devices */
+@media screen and (min-width: 768px) {
+  .card__container {
+    grid-template-columns: repeat(2, 1fr);
+    column-gap: 1.5rem;
+  }
+}
+
+/* For large devices */
+@media screen and (min-width: 1120px) {
+  .container {
+    height: 100vh;
+  }
+
+  .card__container {
+    grid-template-columns: repeat(3, 1fr);
+  }
+
+  .card__img {
+    width: 100%;
+  }
+
+  .card__article {
+    max-width: 348px;
+  }
+
+  .card__data {
+    width: 316px;
+    padding-inline: 2.5rem;
+  }
+}

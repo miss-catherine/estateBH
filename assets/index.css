@@ -1,0 +1,464 @@
+ /* ==================== CSS 變數定義 (主題顏色) ==================== */
+ :root[data-theme="light"] {
+     --bg-color: #f4f6f9;
+     --card-bg: #ffffff;
+     --text-main: #1e293b;
+     --text-muted: #64748b;
+     --accent-color: #2563eb;
+     --accent-hover: #1d4ed8;
+     --border-color: #e2e8f0;
+     --shadow: 0 4px 20px -2px rgba(0, 0, 0, 0.05);
+     --card-shadow-hover: 0 10px 25px -5px rgba(0, 0, 0, 0.1);
+     --toggle-bg: #e2e8f0;
+     --toggle-icon: #f59e0b;
+ }
+
+ :root[data-theme="dark"] {
+     --bg-color: #0f172a;
+     --card-bg: #1e293b;
+     --text-main: #f8fafc;
+     --text-muted: #94a3b8;
+     --accent-color: #3b82f6;
+     --accent-hover: #60a5fa;
+     --border-color: #334155;
+     --shadow: 0 4px 20px -2px rgba(0, 0, 0, 0.3);
+     --card-shadow-hover: 0 10px 25px -5px rgba(0, 0, 0, 0.5);
+     --toggle-bg: #334155;
+     --toggle-icon: #f1c40f;
+ }
+
+ /* 全局基礎樣式 */
+ * {
+     box-sizing: border-box;
+     margin: 0;
+     padding: 0;
+     transition: background-color 0.3s ease, color 0.3s ease, border-color 0.3s ease, box-shadow 0.3s ease;
+ }
+
+ body {
+     font-family: 'Inter', system-ui, -apple-system, sans-serif;
+     background-color: var(--bg-color);
+     color: var(--text-main);
+     min-height: 100vh;
+     padding: 0;
+ }
+
+ .container {
+     width: 100%;
+     max-width: 1200px;
+     padding: 20px;
+     margin: 0 auto;
+     display: flex;
+     flex-direction: column;
+     gap: 24px;
+ }
+
+ /* ==================== 頂部頁首 (Header) ==================== */
+ header {
+     background-color: var(--card-bg);
+     border: 1px solid var(--border-color);
+     border-radius: 16px;
+     padding: 20px 28px;
+     display: flex;
+     justify-content: space-between;
+     align-items: center;
+     box-shadow: var(--shadow);
+     flex-wrap: wrap;
+     gap: 16px;
+ }
+
+ .header-title h1 {
+     font-size: 1.5rem;
+     font-weight: 700;
+     color: var(--text-main);
+ }
+
+ .auto-refresh-indicator {
+     font-size: 0.8rem;
+     color: var(--text-muted);
+     margin-top: 4px;
+     display: flex;
+     align-items: center;
+     gap: 6px;
+ }
+
+ .header-right {
+     display: flex;
+     align-items: center;
+     gap: 16px;
+ }
+
+ .clock-container {
+     text-align: right;
+ }
+
+ .date-display {
+     font-size: 0.875rem;
+     color: var(--text-muted);
+     font-weight: 500;
+ }
+
+ .time-display {
+     font-size: 1.5rem;
+     font-weight: 700;
+     font-variant-numeric: tabular-nums;
+     color: var(--accent-color);
+ }
+
+ /* 功能按鈕區 */
+ .btn-group {
+     display: flex;
+     gap: 10px;
+ }
+
+ .icon-btn {
+     background-color: var(--toggle-bg);
+     border: none;
+     width: 44px;
+     height: 44px;
+     border-radius: 50%;
+     cursor: pointer;
+     display: flex;
+     align-items: center;
+     justify-content: center;
+     font-size: 1.1rem;
+     color: var(--text-main);
+ }
+
+ .icon-btn:hover {
+     transform: scale(1.05);
+ }
+
+ #theme-toggle {
+     color: var(--toggle-icon);
+ }
+
+ .spin-icon {
+     animation: spin 1s linear infinite;
+ }
+
+ @keyframes spin {
+     100% {
+         transform: rotate(360deg);
+     }
+ }
+
+ /* ==================== 區塊共用標題 ==================== */
+ .section-header {
+     display: flex;
+     justify-content: space-between;
+     align-items: center;
+     margin-bottom: 16px;
+ }
+
+ .section-title {
+     font-size: 1.25rem;
+     font-weight: 600;
+     display: flex;
+     align-items: center;
+     gap: 10px;
+ }
+
+ .section-title i {
+     color: var(--accent-color);
+ }
+
+ .update-time {
+     font-size: 0.8rem;
+     color: var(--text-muted);
+ }
+
+ /* ==================== 香港天氣區塊 ==================== */
+ .weather-section {
+     display: flex;
+     flex-direction: column;
+     gap: 16px;
+ }
+
+ .current-weather-card {
+     background: linear-gradient(135deg, var(--accent-color), #1d4ed8);
+     color: #ffffff;
+     border-radius: 16px;
+     padding: 24px;
+     display: flex;
+     justify-content: space-between;
+     align-items: center;
+     box-shadow: var(--shadow);
+     flex-wrap: wrap;
+     gap: 20px;
+ }
+
+ .weather-main-info {
+     display: flex;
+     align-items: center;
+     gap: 20px;
+ }
+
+ .temp-display {
+     font-size: 3.5rem;
+     font-weight: 700;
+     line-height: 1;
+ }
+
+ .weather-desc-group {
+     display: flex;
+     flex-direction: column;
+     gap: 4px;
+ }
+
+ .weather-location {
+     font-size: 1.1rem;
+     font-weight: 600;
+     opacity: 0.9;
+ }
+
+ .weather-desc {
+     font-size: 0.95rem;
+     opacity: 0.8;
+ }
+
+ .weather-extra-info {
+     display: flex;
+     gap: 24px;
+     background: rgba(255, 255, 255, 0.15);
+     backdrop-filter: blur(8px);
+     padding: 12px 20px;
+     border-radius: 12px;
+ }
+
+ .extra-item {
+     display: flex;
+     flex-direction: column;
+     align-items: center;
+ }
+
+ .extra-item .label {
+     font-size: 0.75rem;
+     opacity: 0.8;
+ }
+
+ .extra-item .value {
+     font-size: 1.1rem;
+     font-weight: 600;
+ }
+
+ /* 一週天氣卡片網格 */
+ .forecast-grid {
+     display: grid;
+     grid-template-columns: repeat(auto-fit, minmax(130px, 1fr));
+     gap: 12px;
+ }
+
+ .forecast-card {
+     background-color: var(--card-bg);
+     border: 1px solid var(--border-color);
+     border-radius: 12px;
+     padding: 16px;
+     text-align: center;
+     display: flex;
+     flex-direction: column;
+     align-items: center;
+     gap: 8px;
+     box-shadow: var(--shadow);
+ }
+
+ .forecast-card:hover {
+     transform: translateY(-2px);
+     box-shadow: var(--card-shadow-hover);
+ }
+
+ .forecast-date {
+     font-size: 0.85rem;
+     font-weight: 600;
+ }
+
+ .forecast-week {
+     font-size: 0.75rem;
+     color: var(--text-muted);
+ }
+
+ .forecast-icon {
+     font-size: 1.8rem;
+     margin: 6px 0;
+     color: var(--accent-color);
+ }
+
+ .forecast-temp {
+     font-size: 0.9rem;
+     font-weight: 600;
+ }
+
+ .forecast-rh {
+     font-size: 0.75rem;
+     color: var(--text-muted);
+ }
+
+ /* ==================== 空氣質素健康指數 (AQHI) 區塊 ==================== */
+ .aqhi-grid {
+     display: grid;
+     grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+     gap: 16px;
+ }
+
+ .aqhi-card {
+     background-color: var(--card-bg);
+     border: 1px solid var(--border-color);
+     border-radius: 16px;
+     padding: 20px;
+     box-shadow: var(--shadow);
+     display: flex;
+     flex-direction: column;
+     gap: 12px;
+ }
+
+ .aqhi-header {
+     display: flex;
+     justify-content: space-between;
+     align-items: center;
+ }
+
+ .aqhi-type {
+     font-size: 1rem;
+     font-weight: 600;
+ }
+
+ .aqhi-badge {
+     display: flex;
+     align-items: center;
+     gap: 10px;
+ }
+
+ .aqhi-level-box {
+     width: 42px;
+     height: 42px;
+     border-radius: 10px;
+     display: flex;
+     align-items: center;
+     justify-content: center;
+     font-size: 1.25rem;
+     font-weight: 700;
+     color: #ffffff;
+ }
+
+ .aqhi-risk {
+     font-weight: 700;
+     font-size: 1.1rem;
+ }
+
+ .aqhi-advice {
+     font-size: 0.85rem;
+     color: var(--text-muted);
+     line-height: 1.4;
+ }
+
+ /* AQHI 風險等級顏色設定 */
+ .aqhi-low {
+     background-color: #00b050;
+ }
+
+ .aqhi-moderate {
+     background-color: #ffc000;
+     color: #000 !important;
+ }
+
+ .aqhi-high {
+     background-color: #e76d00;
+ }
+
+ .aqhi-very-high {
+     background-color: #c00000;
+ }
+
+ .aqhi-serious {
+     background-color: #7030a0;
+ }
+
+ /* ==================== 外匯資訊區塊 ==================== */
+ .forex-grid {
+     display: grid;
+     grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+     gap: 16px;
+ }
+
+ .forex-card {
+     background-color: var(--card-bg);
+     border: 1px solid var(--border-color);
+     border-radius: 16px;
+     padding: 20px;
+     display: flex;
+     justify-content: space-between;
+     align-items: center;
+     box-shadow: var(--shadow);
+ }
+
+ .forex-card:hover {
+     transform: translateY(-2px);
+     box-shadow: var(--card-shadow-hover);
+ }
+
+ .forex-info {
+     display: flex;
+     align-items: center;
+     gap: 14px;
+ }
+
+ .currency-flag {
+     width: 44px;
+     height: 44px;
+     border-radius: 50%;
+     background-color: var(--toggle-bg);
+     display: flex;
+     align-items: center;
+     justify-content: center;
+     font-weight: 700;
+     font-size: 0.85rem;
+     color: var(--accent-color);
+ }
+
+ .currency-name {
+     font-weight: 600;
+     font-size: 1rem;
+ }
+
+ .currency-code {
+     font-size: 0.8rem;
+     color: var(--text-muted);
+ }
+
+ .forex-rate-group {
+     text-align: right;
+ }
+
+ .forex-rate {
+     font-size: 1.3rem;
+     font-weight: 700;
+     font-variant-numeric: tabular-nums;
+ }
+
+ .forex-unit {
+     font-size: 0.75rem;
+     color: var(--text-muted);
+ }
+
+ /* 響應式微調 */
+ @media (max-width: 600px) {
+     header {
+         flex-direction: column;
+         align-items: flex-start;
+     }
+
+     .header-right {
+         width: 100%;
+         justify-content: space-between;
+     }
+
+     .current-weather-card {
+         flex-direction: column;
+         align-items: flex-start;
+     }
+
+     .weather-extra-info {
+         width: 100%;
+         justify-content: space-around;
+     }
+ }

@@ -1,0 +1,66 @@
+
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 20px;
+            background: #f5f5f5;
+            color: #0b0b0b;
+        }
+
+        h1 {
+            text-align: center;
+            margin-bottom: 24px;
+        }
+
+        .video-grid {
+            display: grid;
+            gap: 24px;
+            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+            align-items: start;
+        }
+
+        .video-card {
+            background: #c3dbf8;
+            border-radius: 10px;
+            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.08);
+            overflow: hidden;
+            padding: 12px;
+            text-align: center;
+        }
+
+        .video-card a {
+            color: inherit;
+            text-decoration: none;
+            display: block;
+        }
+
+        .video-card img {
+            width: 100%;
+            height: auto;
+            display: block;
+            border-radius: 8px;
+        }
+
+        .video-card .play-overlay {
+            position: relative;
+        }
+
+        .video-card .play-overlay::after {
+            content: "▶";
+            position: absolute;
+            inset: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            font-size: 4rem;
+            color: rgba(255, 255, 255, 0.85);
+            text-shadow: 0 0 16px rgba(0, 0, 0, 0.5);
+            pointer-events: none;
+        }
+
+        .video-card p {
+            margin: 12px 0 0;
+            font-size: 0.95rem;
+            color: #0b0b0b;
+        }
+  

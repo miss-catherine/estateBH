@@ -1,0 +1,437 @@
+<!DOCTYPE html>
+<!-- Designined by CodingLab | www.youtube.com/codinglabyt -->
+<html lang="en" dir="ltr">
+
+<head>
+  <meta charset="UTF-8">
+  <title> Responsive Drop Down Navigation Menu | CodingLab </title>
+  <link rel="stylesheet" href="assets/style.css">
+  <link rel="stylesheet" href="assets/index.css">
+
+  <!-- Boxicons CDN Link -->
+  <link href='https://unpkg.com/boxicons@2.0.7/css/boxicons.min.css' rel='stylesheet'>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+</head>
+
+<body>
+  <nav>
+    <div class="navbar">
+      <i class='bx bx-menu'></i>
+      <div class="logo"><img src="images/logo.png" alt="碧殿閣"><a href="#">Belvedere Heights</a></div>
+      <div class="nav-links">
+        <div class="sidebar-logo">
+          <span class="logo-name">Belvedere Heights</span>
+          <i class='bx bx-x'></i>
+        </div>
+        <ul class="links">
+          <li><a href="index.html">首頁</a></li>
+          <li>
+
+            <a href="announcement.html">公告</a>
+            <i class='bx bxs-chevron-down htmlcss-arrow arrow  '></i>
+            <ul class="htmlCss-sub-menu sub-menu">
+
+              <li><a href="notice.html">通告</a></li>
+              <li><a href="meeting.html">會議記錄 </a></li>
+               <li><a href="reports.html">財務報表 </a></li>
+
+            </ul>
+          </li>
+          <li>
+            <a href="history.html">屋苑歷史 </a>
+            <i class='bx bxs-chevron-down js-arrow arrow '></i>
+            <ul class="js-sub-menu sub-menu">
+              <li><a href="videos.html">懷舊影片 </a></li>
+              <li><a href="gallery.html">畫廊</a></li>
+              <li><a href="others.html">其他</a></li>
+
+            </ul>
+
+          <li><a href="about.html">關於屋苑 </a></li>
+          <li><a href="info_link.html">資訊連結 </a></li>
+          <li><a href=" activities.html">社區活動 </a></li>
+          <li>
+            <a href="leisure.html">休閑活動</a>
+            <i class='bx bxs-chevron-down js-arrow arrow '></i>
+            <ul class="js-sub-menu sub-menu">
+              <li><a href="games1.html">遊戲1 </a></li>
+              <li><a href="games2.html">遊戲2 </a></li>
+              <li><a href="puzzle.html">拼圖</a></li>
+              <li><a href="sticker.html">貼圖 </a></li>
+
+            </ul>
+
+          <li><a href="contact.html">聯絡我們 </a></li>
+        </ul>
+      </div>
+
+    </div>
+    </div>
+  </nav>
+
+   <title>拼豆 DIY 遊戲 - RWD 響應式版</title>
+  <style>
+    * {
+      box-sizing: border-box;
+      /* 防止手機上點擊出現藍色高亮框 */
+      -webkit-tap-highlight-color: transparent;
+    }
+
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+      background-color: #f0f4f8;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      padding: 12px;
+      margin: 0;
+      color: #333;
+      min-height: 100vh;
+      /* 防止手指拖曳時拉動整個網頁頁面 */
+      touch-action: manipulation;
+    }
+
+    h1 {
+      margin: 8px 0 16px 0;
+      color: #2c3e50;
+      font-size: clamp(20px, 5vw, 28px);
+      text-align: center;
+    }
+
+    /* 響應式控制面板 */
+    .controls-panel {
+      background: #ffffff;
+      padding: 12px 16px;
+      border-radius: 12px;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.08);
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+      align-items: center;
+      justify-content: center;
+      margin-bottom: 16px;
+      width: 100%;
+      max-width: 600px;
+    }
+
+    .control-group {
+      display: flex;
+      align-items: center;
+      gap: 6px;
+    }
+
+    label {
+      font-weight: 600;
+      font-size: 14px;
+      color: #555;
+    }
+
+    input[type="color"] {
+      -webkit-appearance: none;
+      border: none;
+      width: 38px;
+      height: 38px;
+      border-radius: 50%;
+      cursor: pointer;
+      background: none;
+    }
+
+    input[type="color"]::-webkit-color-swatch-wrapper {
+      padding: 0;
+    }
+
+    input[type="color"]::-webkit-color-swatch {
+      border: 2px solid #ddd;
+      border-radius: 50%;
+    }
+
+    select {
+      padding: 8px 10px;
+      border-radius: 8px;
+      border: 1px solid #ccc;
+      font-size: 14px;
+      outline: none;
+      background-color: #fff;
+      cursor: pointer;
+    }
+
+    button {
+      padding: 8px 14px;
+      border: none;
+      border-radius: 8px;
+      background-color: #3498db;
+      color: white;
+      font-size: 14px;
+      font-weight: 600;
+      cursor: pointer;
+      transition: all 0.2s ease;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      min-height: 38px;
+    }
+
+    button:hover {
+      background-color: #2980b9;
+    }
+
+    button.active {
+      background-color: #e67e22;
+    }
+
+    button.danger {
+      background-color: #e74c3c;
+    }
+
+    button.success {
+      background-color: #2ecc71;
+    }
+
+    /* 底板外框 */
+    .board-container {
+      background: #ffffff;
+      padding: 12px;
+      border-radius: 16px;
+      box-shadow: 0 8px 24px rgba(0,0,0,0.12);
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      width: 100%;
+      max-width: 92vmin; /* 動態適應手機螢幕寬度與高度 */
+      aspect-ratio: 1 / 1;
+    }
+
+    /* 拼豆底板：自動響應大小 */
+    .board {
+      display: grid;
+      gap: 2px;
+      background-color: #d1d8e0;
+      padding: 8px;
+      border-radius: 10px;
+      user-select: none;
+      box-shadow: inset 0 0 10px rgba(0,0,0,0.15);
+      width: 100%;
+      height: 100%;
+      /* 禁用畫布上的預設觸控滾動，專心用於塗鴉 */
+      touch-action: none; 
+    }
+
+    /* 圓形拼豆 */
+    .bead {
+      width: 100%;
+      height: 100%;
+      background-color: #ffffff;
+      border-radius: 50%;
+      box-shadow: inset -1px -1px 2px rgba(0,0,0,0.25), 1px 1px 2px rgba(0,0,0,0.15);
+      cursor: pointer;
+    }
+
+    /* 手機小螢幕微調 */
+    @media (max-width: 480px) {
+      .controls-panel {
+        gap: 8px;
+        padding: 10px;
+      }
+
+      button, select {
+        font-size: 13px;
+        padding: 6px 10px;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <h1>🎨 拼豆 DIY 工作台</h1>
+
+  <div class="controls-panel">
+    <div class="control-group">
+      <label for="sizeSelect">尺寸：</label>
+      <select id="sizeSelect">
+        <option value="12">12 x 12</option>
+        <option value="16" selected>16 x 16</option>
+        <option value="24">24 x 24</option>
+        <option value="32">32 x 32</option>
+      </select>
+    </div>
+
+    <div class="control-group">
+      <label for="colorPicker">顏色：</label>
+      <input type="color" id="colorPicker" value="#ff4d4d">
+    </div>
+
+    <button id="eraserBtn">🧹 橡皮擦</button>
+    <button id="clearBtn" class="danger">🗑️ 清除</button>
+    <button id="downloadBtn" class="success">💾 下載 PNG</button>
+  </div>
+
+  <div class="board-container">
+    <div id="board" class="board"></div>
+  </div>
+
+  <script>
+    const board = document.getElementById('board');
+    const colorPicker = document.getElementById('colorPicker');
+    const sizeSelect = document.getElementById('sizeSelect');
+    const eraserBtn = document.getElementById('eraserBtn');
+    const clearBtn = document.getElementById('clearBtn');
+    const downloadBtn = document.getElementById('downloadBtn');
+
+    let gridSize = parseInt(sizeSelect.value);
+    let isDrawing = false;
+    let isEraser = false;
+
+    // 初始化底板
+    function createBoard(size) {
+      gridSize = size;
+      board.innerHTML = '';
+      
+      board.style.gridTemplateColumns = `repeat(${size}, 1fr)`;
+      board.style.gridTemplateRows = `repeat(${size}, 1fr)`;
+
+      for (let i = 0; i < size * size; i++) {
+        const bead = document.createElement('div');
+        bead.classList.add('bead');
+        bead.dataset.color = '#ffffff';
+        board.appendChild(bead);
+      }
+    }
+
+    // 著色或擦除邏輯
+    function paintBead(bead) {
+      if (!bead || !bead.classList.contains('bead')) return;
+      const targetColor = isEraser ? '#ffffff' : colorPicker.value;
+      bead.style.backgroundColor = targetColor;
+      bead.dataset.color = targetColor;
+    }
+
+    // --- 滑鼠事件（電腦端） ---
+    board.addEventListener('mousedown', (e) => {
+      e.preventDefault();
+      isDrawing = true;
+      paintBead(e.target);
+    });
+
+    board.addEventListener('mousemove', (e) => {
+      if (isDrawing) {
+        paintBead(e.target);
+      }
+    });
+
+    window.addEventListener('mouseup', () => {
+      isDrawing = false;
+    });
+
+    // --- 觸控事件（手機 / 平板端 RWD 核心） ---
+    board.addEventListener('touchstart', (e) => {
+      e.preventDefault(); // 防止滾動頁面
+      isDrawing = true;
+      const touch = e.touches[0];
+      const target = document.elementFromPoint(touch.clientX, touch.clientY);
+      paintBead(target);
+    }, { passive: false });
+
+    board.addEventListener('touchmove', (e) => {
+      e.preventDefault();
+      if (!isDrawing) return;
+      const touch = e.touches[0];
+      // 根據觸控位置取得當前手指下方的拼豆元素
+      const target = document.elementFromPoint(touch.clientX, touch.clientY);
+      paintBead(target);
+    }, { passive: false });
+
+    window.addEventListener('touchend', () => {
+      isDrawing = false;
+    });
+
+    // --- 按鈕控制邏輯 ---
+    eraserBtn.addEventListener('click', () => {
+      isEraser = !isEraser;
+      eraserBtn.classList.toggle('active', isEraser);
+      eraserBtn.textContent = isEraser ? '✏️ 繪圖' : '🧹 橡皮擦';
+    });
+
+    clearBtn.addEventListener('click', () => {
+      if (confirm('確定要清空當前底板嗎？')) {
+        const beads = document.querySelectorAll('.bead');
+        beads.forEach(bead => {
+          bead.style.backgroundColor = '#ffffff';
+          bead.dataset.color = '#ffffff';
+        });
+      }
+    });
+
+    sizeSelect.addEventListener('change', (e) => {
+      const newSize = parseInt(e.target.value);
+      if (confirm(`切換為 ${newSize}x${newSize} 會清空目前的畫布，確定要切換嗎？`)) {
+        createBoard(newSize);
+      } else {
+        sizeSelect.value = gridSize;
+      }
+    });
+
+    // --- 使用 Native Canvas 匯出 PNG 高畫質圖 ---
+    downloadBtn.addEventListener('click', () => {
+      const beads = document.querySelectorAll('.bead');
+      
+      const beadRadius = 15;
+      const beadSpacing = 34;
+      const padding = 20;
+      
+      const canvas = document.createElement('canvas');
+      const ctx = canvas.getContext('2d');
+      
+      const canvasSize = padding * 2 + gridSize * beadSpacing;
+      canvas.width = canvasSize;
+      canvas.height = canvasSize;
+
+      // 1. 底板背景
+      ctx.fillStyle = '#d1d8e0';
+      ctx.beginPath();
+      ctx.roundRect(0, 0, canvasSize, canvasSize, 16);
+      ctx.fill();
+
+      // 2. 畫拼豆
+      beads.forEach((bead, index) => {
+        const row = Math.floor(index / gridSize);
+        const col = index % gridSize;
+        const color = bead.dataset.color || '#ffffff';
+
+        const x = padding + col * beadSpacing + beadSpacing / 2;
+        const y = padding + row * beadSpacing + beadSpacing / 2;
+
+        ctx.beginPath();
+        ctx.arc(x, y, beadRadius, 0, Math.PI * 2);
+        ctx.fillStyle = color;
+        ctx.fill();
+
+        ctx.strokeStyle = 'rgba(0, 0, 0, 0.15)';
+        ctx.lineWidth = 2;
+        ctx.stroke();
+
+        ctx.beginPath();
+        ctx.arc(x, y, beadRadius * 0.3, 0, Math.PI * 2);
+        ctx.fillStyle = 'rgba(0, 0, 0, 0.08)';
+        ctx.fill();
+      });
+
+      // 3. 下載
+      const link = document.createElement('a');
+      link.download = `拼豆作品-${gridSize}x${gridSize}.png`;
+      link.href = canvas.toDataURL('image/png');
+      link.click();
+    });
+
+    // 初始化
+    createBoard(gridSize);
+  </script>
+
+ <script src="assets/script.js"></script>
+
+ 
+
+
+
+</body>
+
+</html>

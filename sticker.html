@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<!-- Designined by CodingLab | www.youtube.com/codinglabyt -->
+<html lang="en" dir="ltr">
+  <html lang="zh-Hant">
+
+
+<head>
+  <meta charset="UTF-8">
+  <title> Responsive Drop Down Navigation Menu | CodingLab </title>
+  <link rel="stylesheet" href="assets/style.css">
+  <link rel="stylesheet" href="assets/index.css">
+  <link rel="stylesheet" href="assets/stick.css">
+
+  <!-- Boxicons CDN Link -->
+  <link href='https://unpkg.com/boxicons@2.0.7/css/boxicons.min.css' rel='stylesheet'>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+</head>
+
+<body>
+  <nav>
+    <div class="navbar">
+      <i class='bx bx-menu'></i>
+      <div class="logo"><img src="images/logo.png" alt="碧殿閣"><a href="#">Belvedere Heights</a></div>
+      <div class="nav-links">
+        <div class="sidebar-logo">
+          <span class="logo-name">Belvedere Heights</span>
+          <i class='bx bx-x'></i>
+        </div>
+        <ul class="links">
+          <li><a href="index.html">首頁</a></li>
+          <li>
+
+            <a href="announcement.html">公告</a>
+            <i class='bx bxs-chevron-down htmlcss-arrow arrow  '></i>
+            <ul class="htmlCss-sub-menu sub-menu">
+
+              <li><a href="notice.html">通告</a></li>
+              <li><a href="meeting.html">會議記錄 </a></li>
+               <li><a href="reports.html">財務報表 </a></li>
+
+            </ul>
+          </li>
+          <li>
+            <a href="history.html">屋苑歷史 </a>
+            <i class='bx bxs-chevron-down js-arrow arrow '></i>
+            <ul class="js-sub-menu sub-menu">
+              <li><a href="videos.html">懷舊影片 </a></li>
+              <li><a href="gallery.html">畫廊</a></li>
+              <li><a href="others.html">其他</a></li>
+
+            </ul>
+
+          <li><a href="about.html">關於屋苑 </a></li>
+          <li><a href="info_link.html">資訊連結 </a></li>
+          <li><a href=" activities.html">社區活動 </a></li>
+          <li>
+            <a href="leisure.html">休閑活動</a>
+            <i class='bx bxs-chevron-down js-arrow arrow '></i>
+            <ul class="js-sub-menu sub-menu">
+              <li><a href="games1.html">遊戲1 </a></li>
+              <li><a href="games2.html">遊戲2 </a></li>
+              <li><a href="puzzle.html">拼圖</a></li>
+              <li><a href="sticker.html">貼圖 </a></li>
+
+            </ul>
+
+          <li><a href="contact.html">聯絡我們 </a></li>
+        </ul>
+      </div>
+
+    </div>
+    </div>
+  </nav>
+
+  <header class="site-header">
+        <div class="header-inner">
+            <div class="brand-mark" aria-hidden="true">✦</div>
+            <div>
+                <p class="eyebrow">貼紙類別 </p>
+                <h1>角色貼紙收藏</h1>
+            </div>
+            <p class="header-note">挑一張，帶走今天的表情。</p>
+        </div>
+    </header>
+
+    <main>
+        <section class="intro" aria-labelledby="intro-title">
+            <div>
+                <p class="eyebrow">YOUR LITTLE COLLECTION</p>
+                <h2 id="intro-title">五個角色，<br><em>每張都可以帶走。</em></h2>
+            </div>
+            <p class="intro-copy">收藏這些可愛的日常瞬間。<br>點擊下載，就能保存單張透明 PNG 貼圖。</p>
+        </section>
+
+        <nav class="character-nav" aria-label="角色導覽">
+            <a class="character-item business" href="#sticker/business" aria-label="學霸">
+                <span class="chip-icon"><img src="./sticker/學霸/e1.png" alt="學霸貼圖"></span>
+                <span class="chip-label">學霸</span>
+                <span class="chip-count">07</span>
+            </a>
+            <a class="character-item maruko" href="#sticker/maruko" aria-label="小丸子">
+                <span class="chip-icon"><img src="./sticker/小丸子/b1.png" alt="小丸子貼圖"></span>
+                <span class="chip-label">小丸子</span>
+                <span class="chip-count">12</span>
+            </a>
+            <a class="character-item milk" href="#sticker/milk" aria-label="牛奶妹">
+                <span class="chip-icon"><img src="./sticker/牛奶妹/m1.png" alt="牛奶妹貼圖"></span>
+                <span class="chip-label">牛奶妹</span>
+                <span class="chip-count">12</span>
+            </a>
+            <a class="character-item shin" href="#sticker/shin" aria-label="蠟筆小新">
+                <span class="chip-icon"><img src="./sticker/蠟筆小新/p1.png" alt="蠟筆小新貼圖"></span>
+                <span class="chip-label">蠟筆小新</span>
+                <span class="chip-count">12</span>
+            </a>
+            <a class="character-item chef" href="#sticker/chef" aria-label="廚師">
+                <span class="chip-icon"><img src="./sticker/廚師/01.png" alt="廚師貼圖"></span>
+                <span class="chip-label">廚師</span>
+                <span class="chip-count">08</span>
+            </a>
+        </nav>
+
+        <div id="gallery" class="gallery"></div>
+    </main>
+
+    <footer class="site-footer">
+        <p>五組角色貼紙 · PNG transparent collection</p>
+        <p id="total-count"></p>
+    </footer>
+
+
+ <script src="assets/stick.js"></script>
+  <script src="assets/script.js"></script>
+
+
+
+</body>
+
+</html>
